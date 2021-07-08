@@ -66,7 +66,7 @@ def create_app(test_config=None):
 
     @app.route('/games', methods=['POST'])
     @requires_auth('post:games')
-    def create_game():
+    def create_game(jwt):
         body = request.get_json()
 
         if body:
@@ -123,7 +123,7 @@ def create_app(test_config=None):
 
     @app.route('/games/<int:game_id>', methods=['PATCH'])
     @requires_auth('patch:games')
-    def update_game(game_id):
+    def update_game(jwt, game_id):
         body = request.get_json()
 
         if body:
@@ -187,7 +187,7 @@ def create_app(test_config=None):
 
     @app.route('/games/<int:game_id>', methods=['DELETE'])
     @requires_auth('delete:games')
-    def delete_game(game_id):
+    def delete_game(jwt, game_id):
         try:
             game = Game.query.filter(Game.id == game_id).one_or_none()
 
@@ -209,7 +209,7 @@ def create_app(test_config=None):
 
     @app.route('/games/<int:game_id>/rating', methods=['POST'])
     @requires_auth('post:rating')
-    def create_rating(game_id):
+    def create_rating(jwt, game_id):
         body = request.get_json()
 
         rating = body.get('rating')
@@ -266,7 +266,7 @@ def create_app(test_config=None):
 
     @app.route('/tags')
     @requires_auth('get:tags')
-    def retrieve_tags():
+    def retrieve_tags(jwt):
         tags = Tag.query.order_by(Tag.id).all()
         formatted_tags = [tag.format() for tag in tags]
 
@@ -280,7 +280,7 @@ def create_app(test_config=None):
 
     @app.route('/tags', methods=['POST'])
     @requires_auth('post:tags')
-    def create_tag():
+    def create_tag(jwt):
         body = request.get_json()
 
         tag = body.get('tag')
@@ -316,7 +316,7 @@ def create_app(test_config=None):
 
     @app.route('/tags/<int:tag_id>/games')
     @requires_auth('get:tags')
-    def retrieve_games_by_tag(tag_id):
+    def retrieve_games_by_tag(jwt, tag_id):
         tag = Tag.query.filter(Tag.id == tag_id).one_or_none()
         formatted_games = [game.short() for game in tag.games]
 
@@ -331,7 +331,7 @@ def create_app(test_config=None):
 
     @app.route('/tags/<int:tag_id>', methods=['DELETE'])
     @requires_auth('delete:tags')
-    def delete_tag(tag_id):
+    def delete_tag(jwt, tag_id):
         try:
             tag = Tag.query.filter(Tag.id == tag_id).one_or_none()
 
@@ -353,7 +353,7 @@ def create_app(test_config=None):
     
     @app.route('/tags/<int:tag_id>', methods=['PATCH'])
     @requires_auth('patch:tags')
-    def update_tag(tag_id):
+    def update_tag(jwt, tag_id):
         body = request.get_json()
 
         tag = Tag.query.filter(Tag.id == tag_id).one_or_none()
@@ -377,7 +377,7 @@ def create_app(test_config=None):
 
     @app.route('/supplies')
     @requires_auth('get:supplies')
-    def retrieve_supplies():
+    def retrieve_supplies(jwt):
         supplies = Supplies.query.order_by(Supplies.id).all()
         formatted_supplies = [supply.format() for supply in supplies]
 
@@ -391,7 +391,7 @@ def create_app(test_config=None):
 
     @app.route('/supplies/<int:supplies_id>', methods=['DELETE'])
     @requires_auth('delete:supplies')
-    def delete_supplies(supplies_id):
+    def delete_supplies(jwt, supplies_id):
         try:
             supplies = Supplies.query.filter(Supplies.id == supplies_id).one_or_none()
 
@@ -413,7 +413,7 @@ def create_app(test_config=None):
 
     @app.route('/supplies/<int:supplies_id>', methods=['PATCH'])
     @requires_auth('patch:supplies')
-    def update_supplies(supplies_id):
+    def update_supplies(jwt, supplies_id):
         body = request.get_json()
 
         name = body.get('name', None)

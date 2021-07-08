@@ -1,0 +1,1 @@
+https://joneill.us.auth0.com/authorize?audience=backyardgames&response_type=token&client_id=Q5QZNAO3ez5yMdimYPGKVU8bOwkoxpO4&redirect_uri=http://localhost:8100/games

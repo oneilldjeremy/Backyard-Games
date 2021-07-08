@@ -1,11 +1,18 @@
 import os
-from flask import Flask, request, jsonify, abort
+from flask import Flask, request, redirect, url_for, jsonify, abort, render_template
 import json
 from flask_cors import CORS
 from sqlalchemy import or_
 
 from models import setup_db, db, Game, Tag, Supplies, Rating
-from auth import AuthError, requires_auth
+from auth import AuthError, requires_auth, AUTH0_DOMAIN, API_AUDIENCE
+
+CLIENT_ID = os.environ['CLIENT_ID']
+REDIRECT_URL = os.environ['REDIRECT_URL']
+
+log_in_url = 'https://' + AUTH0_DOMAIN + '/authorize?audience=' + API_AUDIENCE \
+             + '&response_type=token&client_id=' + CLIENT_ID \
+             + '&redirect_uri=' + REDIRECT_URL
 
 
 def create_app(test_config=None):
@@ -22,6 +29,23 @@ def create_app(test_config=None):
         response.headers.add('Access-Control-Allow-Methods',
                              'GET,PUT,POST,DELETE,OPTIONS')
         return response
+
+    @app.route('/log-in')
+    def log_in():
+
+        return redirect(log_in_url)
+
+    @app.route('/')
+    def redirect_to_log_in():
+
+        return redirect(url_for('log_in'))
+
+    @app.route('/logged-in')
+    def logged_in():
+
+        message = 'Welcome to Backyard Games!'
+
+        return message
 
     @app.route('/games')
     def retrieve_games():

@@ -5,10 +5,15 @@ from jose import jwt
 from urllib.request import urlopen
 import os
 
-
 AUTH0_DOMAIN = os.environ['AUTH0_DOMAIN']
 ALGORITHMS = os.environ['ALGORITHMS']
 API_AUDIENCE = os.environ['API_AUDIENCE']
+CLIENT_ID = os.environ['CLIENT_ID']
+REDIRECT_URL = os.environ['REDIRECT_URL']
+
+log_in_url = 'https://' + AUTH0_DOMAIN + '/authorize?audience=' + API_AUDIENCE \
+             + '&response_type=token&client_id=' + CLIENT_ID \
+             + '&redirect_uri=' + REDIRECT_URL
 
 
 class AuthError(Exception):

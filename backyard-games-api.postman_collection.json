@@ -1,0 +1,1229 @@
+{
+	"info": {
+		"_postman_id": "26e02b67-df89-4857-92a9-e7539c673042",
+		"name": "backyard-games-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Public",
+			"item": [
+				{
+					"name": "/games",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "/games/#",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/games/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"games",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/games-detailed",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/games-detailed",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"games-detailed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/games/search",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"search_term\": \"toss\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/games/search",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"games",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/games",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"diy\": false,\r\n    \"instructions\": \"Throw the disc toward the can and jam it in\",\r\n    \"name\": \"Kan Jam\",\r\n    \"players\": 4,\r\n    \"link\": \"https://www.amazon.com/dp/B001RJ4Q2G\",\r\n    \"tags\": [\"action\", \"frisbee\", \"drinking\", \"tossing\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/games",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"games"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/games",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"tags\": [\r\n            \"bean bag\",\r\n            \"tossing\"\r\n        ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/games/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"games",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/games",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/games/3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"games",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/games/#/rating",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rating\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/games/1/rating",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"games",
+								"1",
+								"rating"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/tags",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/tags",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tags/#/games",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/tags/1/games",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tags",
+								"1",
+								"games"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/tags",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tag\": \"SOLO CUP\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/tags",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/tags/#",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tag\": \"bean bags\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/tags/11",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tags",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/tags/#",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/tags/3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tags",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/supplies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/supplies",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"supplies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/supplies/#",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ski poles\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/supplies/4",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"supplies",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/supplies/#",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tag\": \"Ball\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/supplies/5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"supplies",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Registered User",
+			"item": [
+				{
+					"name": "/games",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/games",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"games"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/games/#",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/games/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"games",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/games-detailed",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/games-detailed",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"games-detailed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/games/search",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"search_term\": \"toss\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/games/search",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"games",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/games",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"diy\": false,\r\n    \"instructions\": \"Throw the disc toward the can and jam it in\",\r\n    \"name\": \"Kan Jam\",\r\n    \"players\": 4,\r\n    \"link\": \"https://www.amazon.com/dp/B001RJ4Q2G\",\r\n    \"tags\": [\"action\", \"frisbee\", \"drinking\", \"tossing\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/games",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"games"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/games",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"tags\": [\r\n            \"bean bag\",\r\n            \"tossing\"\r\n        ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/games/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"games",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/games",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/games/3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"games",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/games/#/rating",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rating\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/games/1/rating",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"games",
+								"1",
+								"rating"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/tags",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/tags",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tags/#/games",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/tags/1/games",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tags",
+								"1",
+								"games"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/tags",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tag\": \"SOLO CUP\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/tags",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/tags/#",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tag\": \"bean bags\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/tags/11",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tags",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/tags/#",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/tags/3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tags",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/supplies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/supplies",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"supplies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/supplies/#",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ski poles\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/supplies/4",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"supplies",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/supplies/#",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tag\": \"Ball\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/supplies/5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"supplies",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlctaVhSWS1mbU9jdGFLXy1PNkNjZCJ9.eyJpc3MiOiJodHRwczovL2pvbmVpbGwudXMuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDYwZTcxNzNmMDQzYzNjMDA2OTdjNjNkZCIsImF1ZCI6ImJhY2t5YXJkZ2FtZXMiLCJpYXQiOjE2MjU4Mzk3NDksImV4cCI6MTYyNTg0Njk0OSwiYXpwIjoiUTVRWk5BTzNlejV5TWRpbVlQR0tWVThiT3drb3hwTzQiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImdldDpnYW1lcyIsImdldDpzdXBwbGllcyIsImdldDp0YWdzIiwicGF0Y2g6Z2FtZXMiLCJwb3N0OmdhbWVzIiwicG9zdDpyYXRpbmciXX0.PbXWfDPl13qQDWw4cYjgXcNk-sKweidLqjk2LDpAEHfnD9iCoGvoxNvB4QjhHx9jiDM69h1JuqkaX5-2zGor5TMNBNJAwmpUhcG8J8GqELz0meSTAvqMrL1ZSBj6mF1WoKBwrwEAnfeqL9eT_VDY-3VGfZRqX3H-W95w_TJh3WP1-Pe5NKlUjWLFBLz1j5PodRZr_B3L0jbVDPcty8NNNmGsK9ewer-CWwFdXXVH-AvCnMyuKWBLuJzwW_7ppvIufkqjY-AAuFcsoesZ1GLmtX0y_YwPMaOdYqco-vKwWJn4gBiJaeQVLdm44JbqmYYYVm2Sjzomky15hOVqFzZyPg",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "/games",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/games",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"games"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/games/#",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/games/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"games",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/games-detailed",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/games-detailed",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"games-detailed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/games/search",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"search_term\": \"toss\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/games/search",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"games",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/games",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"diy\": false,\r\n    \"instructions\": \"Throw the disc toward the can and jam it in\",\r\n    \"name\": \"Kan Jam\",\r\n    \"players\": 4,\r\n    \"link\": \"https://www.amazon.com/dp/B001RJ4Q2G\",\r\n    \"tags\": [\"action\", \"frisbee\", \"drinking\", \"tossing\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/games",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"games"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/games",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"tags\": [\r\n            \"bean bag\",\r\n            \"tossing\"\r\n        ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/games/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"games",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/games",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/games/3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"games",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/games/#/rating",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rating\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/games/1/rating",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"games",
+								"1",
+								"rating"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/tags",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/tags",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tags/#/games",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/tags/1/games",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tags",
+								"1",
+								"games"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/tags",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tag\": \"SOLO CUP\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/tags",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/tags/#",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tag\": \"bean bags\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/tags/11",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tags",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/tags/#",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/tags/3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tags",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/supplies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/supplies",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"supplies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/supplies/#",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ski poles\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/supplies/4",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"supplies",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/supplies/#",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tag\": \"Ball\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/supplies/5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"supplies",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlctaVhSWS1mbU9jdGFLXy1PNkNjZCJ9.eyJpc3MiOiJodHRwczovL2pvbmVpbGwudXMuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDYwZTcxNmZmMDRmNDlhMDA2ZmU0Yzk2NyIsImF1ZCI6ImJhY2t5YXJkZ2FtZXMiLCJpYXQiOjE2MjU4NDUzMzIsImV4cCI6MTYyNTg1MjUzMiwiYXpwIjoiUTVRWk5BTzNlejV5TWRpbVlQR0tWVThiT3drb3hwTzQiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpnYW1lcyIsImRlbGV0ZTpzdXBwbGllcyIsImRlbGV0ZTp0YWdzIiwiZ2V0OmdhbWVzIiwiZ2V0OnN1cHBsaWVzIiwiZ2V0OnRhZ3MiLCJwYXRjaDpnYW1lcyIsInBhdGNoOnN1cHBsaWVzIiwicGF0Y2g6dGFncyIsInBvc3Q6Z2FtZXMiLCJwb3N0OnJhdGluZyIsInBvc3Q6dGFncyJdfQ.PR1mjNUm3wyVHdZUvj55m5sfw_jxaV46z_Jo5WrQfuIMN_P2vY3ilOFki4EPLj2Mvb0WsrI-UubV9H2LVyb-IPUnaaVW8YH4kiklL4HMVCBE_wozVIykL3sqHDbclnITfNGjRXGH7m8RKvuLQn3PbEgTzl8xcPC_j_t5eL7O0rZvEdQRUToC6Wq4jgRchflat5Lt9fvUJ0Td4Ij4eHQC2YC2N9O8SFz273z-toKvisNYCByfvI6jd6IlROBNv4tDrmhoQO6hXsXDAMmch_UMqbPz-qcVFt5HIWrF3SKmlvRRb8EJUg-OBFNed03Ij_j7hYCd88ojtHiY1ljyaoSQbQ",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": ""
+		}
+	]
+}

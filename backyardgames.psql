@@ -1,0 +1,485 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: alembic_version; Type: TABLE; Schema: public; Owner: Jeremy
+--
+
+CREATE TABLE public.alembic_version (
+    version_num character varying(32) NOT NULL
+);
+
+
+ALTER TABLE public.alembic_version OWNER TO "Jeremy";
+
+--
+-- Name: games; Type: TABLE; Schema: public; Owner: Jeremy
+--
+
+CREATE TABLE public.games (
+    id integer NOT NULL,
+    name character varying NOT NULL,
+    instructions character varying,
+    players integer,
+    diy boolean,
+    link character varying
+);
+
+
+ALTER TABLE public.games OWNER TO "Jeremy";
+
+--
+-- Name: games_id_seq; Type: SEQUENCE; Schema: public; Owner: Jeremy
+--
+
+CREATE SEQUENCE public.games_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.games_id_seq OWNER TO "Jeremy";
+
+--
+-- Name: games_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Jeremy
+--
+
+ALTER SEQUENCE public.games_id_seq OWNED BY public.games.id;
+
+
+--
+-- Name: ratings; Type: TABLE; Schema: public; Owner: Jeremy
+--
+
+CREATE TABLE public.ratings (
+    id integer NOT NULL,
+    rating integer NOT NULL,
+    game_id integer NOT NULL
+);
+
+
+ALTER TABLE public.ratings OWNER TO "Jeremy";
+
+--
+-- Name: ratings_id_seq; Type: SEQUENCE; Schema: public; Owner: Jeremy
+--
+
+CREATE SEQUENCE public.ratings_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.ratings_id_seq OWNER TO "Jeremy";
+
+--
+-- Name: ratings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Jeremy
+--
+
+ALTER SEQUENCE public.ratings_id_seq OWNED BY public.ratings.id;
+
+
+--
+-- Name: supplies; Type: TABLE; Schema: public; Owner: Jeremy
+--
+
+CREATE TABLE public.supplies (
+    id integer NOT NULL,
+    name character varying NOT NULL,
+    quantity integer,
+    estimated_total_cost character varying,
+    game_id integer NOT NULL
+);
+
+
+ALTER TABLE public.supplies OWNER TO "Jeremy";
+
+--
+-- Name: supplies_id_seq; Type: SEQUENCE; Schema: public; Owner: Jeremy
+--
+
+CREATE SEQUENCE public.supplies_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.supplies_id_seq OWNER TO "Jeremy";
+
+--
+-- Name: supplies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Jeremy
+--
+
+ALTER SEQUENCE public.supplies_id_seq OWNED BY public.supplies.id;
+
+
+--
+-- Name: tag_game_xref; Type: TABLE; Schema: public; Owner: Jeremy
+--
+
+CREATE TABLE public.tag_game_xref (
+    tag_id integer NOT NULL,
+    game_id integer NOT NULL
+);
+
+
+ALTER TABLE public.tag_game_xref OWNER TO "Jeremy";
+
+--
+-- Name: tags; Type: TABLE; Schema: public; Owner: Jeremy
+--
+
+CREATE TABLE public.tags (
+    id integer NOT NULL,
+    tag character varying NOT NULL
+);
+
+
+ALTER TABLE public.tags OWNER TO "Jeremy";
+
+--
+-- Name: tags_id_seq; Type: SEQUENCE; Schema: public; Owner: Jeremy
+--
+
+CREATE SEQUENCE public.tags_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tags_id_seq OWNER TO "Jeremy";
+
+--
+-- Name: tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Jeremy
+--
+
+ALTER SEQUENCE public.tags_id_seq OWNED BY public.tags.id;
+
+
+--
+-- Name: games id; Type: DEFAULT; Schema: public; Owner: Jeremy
+--
+
+ALTER TABLE ONLY public.games ALTER COLUMN id SET DEFAULT nextval('public.games_id_seq'::regclass);
+
+
+--
+-- Name: ratings id; Type: DEFAULT; Schema: public; Owner: Jeremy
+--
+
+ALTER TABLE ONLY public.ratings ALTER COLUMN id SET DEFAULT nextval('public.ratings_id_seq'::regclass);
+
+
+--
+-- Name: supplies id; Type: DEFAULT; Schema: public; Owner: Jeremy
+--
+
+ALTER TABLE ONLY public.supplies ALTER COLUMN id SET DEFAULT nextval('public.supplies_id_seq'::regclass);
+
+
+--
+-- Name: tags id; Type: DEFAULT; Schema: public; Owner: Jeremy
+--
+
+ALTER TABLE ONLY public.tags ALTER COLUMN id SET DEFAULT nextval('public.tags_id_seq'::regclass);
+
+
+--
+-- Data for Name: alembic_version; Type: TABLE DATA; Schema: public; Owner: Jeremy
+--
+
+COPY public.alembic_version (version_num) FROM stdin;
+52aa596d0bbe
+\.
+
+
+--
+-- Data for Name: games; Type: TABLE DATA; Schema: public; Owner: Jeremy
+--
+
+COPY public.games (id, name, instructions, players, diy, link) FROM stdin;
+1	Corn Hole	Two teams of two people. One stands at each board. Players on one board take turns taking shots. Three shots each. One point for on the board. Three for in the hole. Each round is the absolute value of the difference between the two players.	4	f	
+4	Beer Pong	Two teams of two people. Each side shoots at 6 or 10 cups arranged in a triangle.	4	t	\N
+5	Giant Jenga	It's jenga but big	4	t	\N
+6	Kan Jam	Throw the disc toward the can and jam it in	4	f	https://www.amazon.com/dp/B001RJ4Q2G
+2	Polish Horseshoes	Stick ski poles upside down into the ground. Put bottles on top. Throw frisbee at bottles.	4	t	\N
+3	Spikeball	Two teams of two people. One serves off of the net. The other team bounces it back off the net. One pass allowed	4	f	https://www.amazon.com/dp/B002V7A7MQ
+\.
+
+
+--
+-- Data for Name: ratings; Type: TABLE DATA; Schema: public; Owner: Jeremy
+--
+
+COPY public.ratings (id, rating, game_id) FROM stdin;
+1	5	1
+2	4	1
+3	5	1
+4	5	1
+5	5	1
+6	4	1
+7	3	1
+8	4	1
+9	4	1
+10	2	1
+11	5	2
+12	5	2
+13	5	2
+14	5	2
+15	5	2
+16	5	2
+17	4	2
+18	4	2
+19	4	2
+20	5	2
+21	5	2
+22	4	3
+23	4	3
+24	5	3
+25	5	3
+26	5	3
+27	4	3
+28	4	3
+29	4	3
+30	5	3
+31	5	4
+32	5	4
+33	5	4
+34	5	4
+35	5	4
+36	5	4
+37	5	4
+38	5	4
+39	4	4
+40	4	4
+41	5	4
+42	5	4
+43	5	4
+44	5	4
+45	5	4
+46	5	4
+47	5	4
+48	3	5
+49	3	5
+50	3	5
+51	3	5
+52	3	5
+53	3	5
+54	4	5
+55	4	5
+56	2	5
+57	2	5
+58	5	5
+59	5	5
+60	5	6
+61	5	6
+62	5	6
+63	4	6
+64	4	6
+65	4	6
+\.
+
+
+--
+-- Data for Name: supplies; Type: TABLE DATA; Schema: public; Owner: Jeremy
+--
+
+COPY public.supplies (id, name, quantity, estimated_total_cost, game_id) FROM stdin;
+6	Ping pong ball	2	$1	4
+7	Solo cups	20	$3	4
+8	Wooden blocks	20	$100	5
+4	Ski poles	2	$0-$100	2
+\.
+
+
+--
+-- Data for Name: tag_game_xref; Type: TABLE DATA; Schema: public; Owner: Jeremy
+--
+
+COPY public.tag_game_xref (tag_id, game_id) FROM stdin;
+1	1
+1	2
+4	2
+2	3
+8	3
+7	4
+10	4
+5	4
+8	6
+4	6
+5	6
+1	6
+12	1
+\.
+
+
+--
+-- Data for Name: tags; Type: TABLE DATA; Schema: public; Owner: Jeremy
+--
+
+COPY public.tags (id, tag) FROM stdin;
+2	ball
+1	tossing
+4	frisbee
+5	drinking
+6	puzzle
+7	ping pong
+8	action
+9	ring
+10	solo cup
+11	bean bags
+12	bean bag
+\.
+
+
+--
+-- Name: games_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Jeremy
+--
+
+SELECT pg_catalog.setval('public.games_id_seq', 6, true);
+
+
+--
+-- Name: ratings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Jeremy
+--
+
+SELECT pg_catalog.setval('public.ratings_id_seq', 65, true);
+
+
+--
+-- Name: supplies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Jeremy
+--
+
+SELECT pg_catalog.setval('public.supplies_id_seq', 8, true);
+
+
+--
+-- Name: tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Jeremy
+--
+
+SELECT pg_catalog.setval('public.tags_id_seq', 12, true);
+
+
+--
+-- Name: alembic_version alembic_version_pkc; Type: CONSTRAINT; Schema: public; Owner: Jeremy
+--
+
+ALTER TABLE ONLY public.alembic_version
+    ADD CONSTRAINT alembic_version_pkc PRIMARY KEY (version_num);
+
+
+--
+-- Name: games games_pkey; Type: CONSTRAINT; Schema: public; Owner: Jeremy
+--
+
+ALTER TABLE ONLY public.games
+    ADD CONSTRAINT games_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: ratings ratings_pkey; Type: CONSTRAINT; Schema: public; Owner: Jeremy
+--
+
+ALTER TABLE ONLY public.ratings
+    ADD CONSTRAINT ratings_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: supplies supplies_pkey; Type: CONSTRAINT; Schema: public; Owner: Jeremy
+--
+
+ALTER TABLE ONLY public.supplies
+    ADD CONSTRAINT supplies_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tag_game_xref tag_game_xref_pkey; Type: CONSTRAINT; Schema: public; Owner: Jeremy
+--
+
+ALTER TABLE ONLY public.tag_game_xref
+    ADD CONSTRAINT tag_game_xref_pkey PRIMARY KEY (tag_id, game_id);
+
+
+--
+-- Name: tags tags_pkey; Type: CONSTRAINT; Schema: public; Owner: Jeremy
+--
+
+ALTER TABLE ONLY public.tags
+    ADD CONSTRAINT tags_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tags tags_tag_key; Type: CONSTRAINT; Schema: public; Owner: Jeremy
+--
+
+ALTER TABLE ONLY public.tags
+    ADD CONSTRAINT tags_tag_key UNIQUE (tag);
+
+
+--
+-- Name: ratings ratings_game_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Jeremy
+--
+
+ALTER TABLE ONLY public.ratings
+    ADD CONSTRAINT ratings_game_id_fkey FOREIGN KEY (game_id) REFERENCES public.games(id);
+
+
+--
+-- Name: supplies supplies_game_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Jeremy
+--
+
+ALTER TABLE ONLY public.supplies
+    ADD CONSTRAINT supplies_game_id_fkey FOREIGN KEY (game_id) REFERENCES public.games(id);
+
+
+--
+-- Name: tag_game_xref tag_game_xref_game_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Jeremy
+--
+
+ALTER TABLE ONLY public.tag_game_xref
+    ADD CONSTRAINT tag_game_xref_game_id_fkey FOREIGN KEY (game_id) REFERENCES public.games(id);
+
+
+--
+-- Name: tag_game_xref tag_game_xref_tag_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Jeremy
+--
+
+ALTER TABLE ONLY public.tag_game_xref
+    ADD CONSTRAINT tag_game_xref_tag_id_fkey FOREIGN KEY (tag_id) REFERENCES public.tags(id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+

@@ -129,6 +129,10 @@ class Game(db.Model):
                                cascade="all,delete",
                                backref='game',
                                lazy="joined")
+    ratings = db.relationship('Rating',
+                               cascade="all,delete",
+                               backref='game',
+                               lazy="joined")
 
     def __init__(self, name, instructions='', players='1',
                  diy=False, link=''):
@@ -221,6 +225,7 @@ class Game(db.Model):
             'instructions': self.instructions,
             'players': self.players,
             'diy': self.diy,
+            'link': self.link,
             'tags': tags_string,
             'supplies': supplies_string,
             'rating': self.get_avg_rating()

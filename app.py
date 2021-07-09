@@ -1,18 +1,11 @@
 import os
-from flask import Flask, request, redirect, url_for, jsonify, abort, render_template
+from flask import Flask, request, redirect, url_for, jsonify, abort
 import json
 from flask_cors import CORS
 from sqlalchemy import or_
 
 from models import setup_db, db, Game, Tag, Supplies, Rating
-from auth import AuthError, requires_auth, AUTH0_DOMAIN, API_AUDIENCE
-
-CLIENT_ID = os.environ['CLIENT_ID']
-REDIRECT_URL = os.environ['REDIRECT_URL']
-
-log_in_url = 'https://' + AUTH0_DOMAIN + '/authorize?audience=' + API_AUDIENCE \
-             + '&response_type=token&client_id=' + CLIENT_ID \
-             + '&redirect_uri=' + REDIRECT_URL
+from auth import AuthError, requires_auth, log_in_url
 
 
 def create_app(test_config=None):
@@ -185,7 +178,7 @@ def create_app(test_config=None):
                 current_game.players = players
             if diy:
                 current_game.diy = diy
-            if diy:
+            if link:
                 current_game.link = link
             if tag_string_list:
                 current_game.add_tags(tag_string_list)
@@ -238,6 +231,11 @@ def create_app(test_config=None):
 
         rating = body.get('rating')
 
+        game = Game.query.filter(Game.id == game_id).one_or_none()
+
+        if game is None:
+            abort(404)
+
         if type(rating) is not int or rating not in range(1, 6):
             abort(400)
 
@@ -257,7 +255,7 @@ def create_app(test_config=None):
 
         return jsonify({
             'success': True,
-            'tags': new_rating_json
+            'rating': new_rating_json
         })
 
     @app.route('/games/search')
